@@ -1,0 +1,610 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0E2E2B 0%, #1a3d38 100%);
+    color: #F4F4F2;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.logo-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #BFAF80;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    animation: logoFloat 3s ease-in-out infinite alternate;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+    border-color: #D4C397;
+    box-shadow: 0 12px 48px rgba(191, 175, 128, 0.3);
+}
+
+.logo-icon {
+    font-size: 4rem;
+    background: linear-gradient(45deg, #BFAF80, #D4C397);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes logoFloat {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #BFAF80;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    color: #BFAF80;
+    font-weight: 300;
+    opacity: 0.9;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Main content */
+.main-content {
+    margin-bottom: 4rem;
+}
+
+/* Category sections */
+.category-section {
+    margin-bottom: 3rem;
+    background: rgba(244, 244, 242, 0.05);
+    border-radius: 20px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(244, 244, 242, 0.1);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    background: rgba(191, 175, 128, 0.1);
+    border: 1px solid rgba(191, 175, 128, 0.2);
+}
+
+.category-header:hover {
+    background: rgba(191, 175, 128, 0.2);
+    transform: translateY(-2px);
+}
+
+.category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #BFAF80;
+}
+
+.category-arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: #BFAF80;
+}
+
+.category-arrow.expanded {
+    transform: rotate(180deg);
+}
+
+.cocktail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.cocktail-grid.expanded {
+    max-height: 2000px;
+    padding: 2rem 1rem;
+}
+
+/* Cocktail cards */
+.cocktail-card {
+    background: #F4F4F2;
+    border-radius: 20px;
+    padding: 1.5rem;
+    color: #2C2C2C;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.cocktail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #BFAF80, #D4C397);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.cocktail-card:hover::before {
+    transform: scaleX(1);
+}
+
+.cocktail-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    border-color: rgba(191, 175, 128, 0.3);
+}
+
+.cocktail-card.selected {
+    border-color: #BFAF80;
+    background: linear-gradient(135deg, #F4F4F2 0%, #F9F9F7 100%);
+}
+
+.cocktail-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    display: block;
+    border: 4px solid #0E2E2B;
+    transition: all 0.3s ease;
+}
+
+.cocktail-card:hover .cocktail-image {
+    transform: scale(1.05);
+    border-color: #BFAF80;
+}
+
+.cocktail-content {
+    text-align: center;
+}
+
+.cocktail-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2C2C2C;
+}
+
+.cocktail-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.cocktail-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.cocktail-selector:hover {
+    background: rgba(191, 175, 128, 0.1);
+}
+
+.cocktail-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #BFAF80;
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.cocktail-checkbox.checked {
+    background: #BFAF80;
+}
+
+.cocktail-checkbox.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cocktail-selector-text {
+    font-weight: 500;
+    color: #2C2C2C;
+}
+
+/* Booking section */
+.booking-section {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.booking-card {
+    background: rgba(244, 244, 242, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 2.5rem;
+    border: 1px solid rgba(244, 244, 242, 0.2);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+}
+
+.booking-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #BFAF80;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #F4F4F2;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgba(244, 244, 242, 0.2);
+    border-radius: 12px;
+    background: rgba(244, 244, 242, 0.9);
+    color: #2C2C2C;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #BFAF80;
+    box-shadow: 0 0 0 3px rgba(191, 175, 128, 0.2);
+}
+
+.form-input::placeholder {
+    color: #666;
+}
+
+.selected-cocktails {
+    margin-bottom: 2rem;
+}
+
+.selected-cocktails h4 {
+    color: #BFAF80;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.selected-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.selected-item {
+    background: rgba(191, 175, 128, 0.2);
+    color: #F4F4F2;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(191, 175, 128, 0.3);
+}
+
+.whatsapp-btn {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.whatsapp-icon {
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+    margin-top: 6rem;
+    padding: 3rem 0 2rem;
+    border-top: 1px solid rgba(244, 244, 242, 0.1);
+    background: rgba(244, 244, 242, 0.02);
+    backdrop-filter: blur(10px);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    font-family: 'Playfair Display', serif;
+    color: #BFAF80;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #F4F4F2;
+    opacity: 0.8;
+    text-decoration: none;
+    line-height: 1.6;
+    transition: opacity 0.3s ease;
+}
+
+.footer-section a:hover {
+    opacity: 1;
+    color: #BFAF80;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(191, 175, 128, 0.1);
+    border-radius: 50%;
+    color: #BFAF80;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-link:hover {
+    background: rgba(191, 175, 128, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(191, 175, 128, 0.2);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(244, 244, 242, 0.1);
+    color: #F4F4F2;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-logo-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #BFAF80;
+}
+
+.footer-logo-icon {
+    font-size: 1.5rem;
+}
+
+.footer-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #BFAF80;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .logo-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .logo-icon {
+        font-size: 3rem;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .cocktail-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .booking-card {
+        padding: 2rem;
+        margin: 0 10px;
+    }
+    
+    .category-title {
+        font-size: 1.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cocktail-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .logo-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .logo-icon {
+        font-size: 2.5rem;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .footer {
+        margin-top: 4rem;
+        padding: 2rem 0 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cocktail-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.cocktail-card:nth-child(1) { animation-delay: 0.1s; }
+.cocktail-card:nth-child(2) { animation-delay: 0.2s; }
+.cocktail-card:nth-child(3) { animation-delay: 0.3s; }
+.cocktail-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(191, 175, 128, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(191, 175, 128, 0.5);
+}

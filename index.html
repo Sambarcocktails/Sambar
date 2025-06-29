@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sambar</title>
+    
+    <!-- Favicon -->
+<link rel="icon" type="image/png" href="logoh.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img src="logoh.png" alt="Sambar Logo" class="logo-image">
+            </div>
+            <h1 class="main-title">Sambar</h1>
+            <p class="subtitle">Carta de Cócteles Premium</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="cocktail-categories"></div>
+        </main>
+
+        <!-- Booking Section -->
+        <section class="booking-section">
+            <div class="booking-card">
+                <h3 class="booking-title">Reserva tu Evento</h3>
+                
+                <div class="form-group">
+                    <label for="client-name" class="form-label">Nombre del Cliente</label>
+                    <input type="text" id="client-name" class="form-input" placeholder="Ingresa tu nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-date" class="form-label">Fecha del Evento</label>
+                    <input type="date" id="event-date" class="form-input">
+                </div>
+                
+                <div class="selected-cocktails">
+                    <h4>Cócteles Seleccionados</h4>
+                    <div id="selected-list" class="selected-list">
+                        <p style="color: #666; font-style: italic;">Ningún cóctel seleccionado</p>
+                    </div>
+                </div>
+                
+                <button id="whatsapp-btn" class="whatsapp-btn" disabled>
+                    <span class="whatsapp-icon">📱</span>
+                    Enviar por WhatsApp
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logoh.png" alt="Sambar" class="footer-logo-image">
+                        <span class="footer-logo-text">Sambar</span>
+                    </div>
+                    <p>Experiencias únicas en coctelería premium. Creamos momentos inolvidables con los mejores sabores.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <div class="footer-links">
+                        <a href="tel:+5191139911">📞 +51 901-139-911</a>
+                        <a href="mailto:info@sambar.com">✉️ info@sambarcocktails.com</a>
+                        <p>📍 Lima, Peru</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <div class="footer-links">
+                        <a href="#">Eventos Privados</a>
+                        <a href="#">Bodas y Celebraciones</a>
+                        <a href="#">Cócteles Corporativos</a>
+                        <a href="#">Clases de Coctelería</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/sambar.cocktails/" class="social-link">📷</a>
+                        <a href="https://x.com/Sambarcocktails" class="social-link">📘</a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">
+                        Comparte tus momentos con #SambarExperience
+                    </p>
+                </div>
+            </div>
+
+
+
+            <div class="footer-bottom">
+                <p>© 2024 Sambar. Todos los derechos reservados. Disfruta responsablemente.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
